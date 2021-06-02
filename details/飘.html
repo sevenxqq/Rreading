@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>西卡图书</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://jhyt.oss-cn-shanghai.aliyuncs.com/images/1531367199089_PDFObject.js"></script>
+</head>
+
+<body>
+
+    <!-- 顶层导航-->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">西卡图书</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="../home.html">首页</a></li>
+                    <li><a href="../bookTop.html">图书榜</a></li>
+                    <li><a href="../cart.html">我的订单</a></li>
+                    <li><a href="../center.html">个人中心</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="title">
+            <h2>飘</h2>
+        </div>
+        <div class="row">
+            <div id="mainpic" class="col-md-3">
+                <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522210328.jpg" alt="图片加载失败" style="max-height: 250px;">
+                <br>
+            </div>
+            <div id="info" class="col-md-4">
+                <span class="pl">作者:</span> [美国] 玛格丽特·米切尔<br>
+                <span class="pl">出版社:</span> 译林出版社<br>
+                <span class="pl">原作名:</span> Gone with the Wind<br>
+                <span class="pl"> 译者:</span>李美华 <br>
+                <span class="pl">出版年:</span> 2000-9<br>
+                <span class="pl">页数:</span> 1235<br>
+                <span class="pl">定价:</span> 20.00元<br>
+                <span class="pl">装帧:</span> 精装<br>
+                <span class="pl">ISBN:</span> 9787806570920<br>
+            </div>
+            <div id="intr" class="col-md-5" style="background-color: cornsilk;">
+               《飘》是美国作家玛格丽特·米切尔创作的长篇小说，该作1937年获得普利策文学奖。 
+                小说以亚特兰大以及附近的一个种植园为故事场景，描绘了内战前后美国南方人的生活。<br>
+                作品刻画了那个时代的许多南方人的形象，占中心位置的斯嘉丽、瑞德、艾希礼、梅兰妮等人是其中的典型代表。
+                他们的习俗礼仪、言行举止、精神观念、政治态度，通过对斯嘉丽·奥哈拉与白瑞德的爱情纠缠为主线，
+                成功地再现了林肯时期的南北战争以及美国南方地区的社会生活。
+            </div>
+        </div>
+       
+        <div class="col-md-12" style="margin-left: 170px;">
+            <form  action="../phpFiles/setRead.php" method="post" class="col-md-2">            
+                <label> <button type="submit" name = "bookName" value="飘.txt" >在线阅读</button> </label>          
+            </form>
+            <form  action="../phpFiles/orders.php" method="post" class="col-md-2" >            
+                <label> <button type="submit" name = "bookName" value="飘" >加入订单</button> </label>             
+            </form>
+            <form  action="../phpFiles/addPlan.php" method="post" class="col-md-2" >            
+                <label> <button type="submit" name = "bookName" value="飘" >加入阅读计划</button> </label>             
+            </form>
+            <form  action="../phpFiles/removePlan.php" method="post" class="col-md-2" >            
+                <label> <button type="submit" name = "bookName" value="飘" >移出阅读计划</button> </label>             
+            </form>
+            <form  action="../phpFiles/bookScore.php" method="post" class="col-md-2" >            
+                <label><input name ="score" type="number" min="1" max ="10" placeholder="评分" required>
+                <button type="submit" name = "bookName" value="飘" >GO</button> </label>             
+            </form>
+        </div>
+
+    </div>
+       
+
+  
+</body>
+
+</html>

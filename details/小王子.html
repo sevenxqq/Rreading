@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>西卡图书</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <!-- 顶层导航-->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">西卡图书</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="../home.html">首页</a></li>
+                    <li><a href="../bookTop.html">图书榜</a></li>
+                    <li><a href="../cart.html">我的订单</a></li>
+                    <li><a href="../center.html">个人中心</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="title">
+            <!--TODO:替换标题-->
+            <h2>小王子</h2>
+        </div>
+        <div class="row">
+            <div id="mainpic" class="col-md-3">
+                <!--TODO:替换图片-->
+                <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522221828.jpg" alt="图片加载失败" style="width:180px; max-height: 250px;">
+                <br>
+            </div>
+            <!--TODO:修改相关信息-->
+            <div id="info" class="col-md-4">
+                <span class="pl">作者:</span> xxx<br>
+                <span class="pl">出版社:</span> xx出版社<br>
+                <span class="pl">原作名:</span> xxx<br>
+                <span class="pl"> 译者:</span> xxx <br>
+                <span class="pl">出版年:</span> xxxx-x<br>
+                <span class="pl">页数:</span> xxx<br>
+                <span class="pl">定价:</span> xx.00元<br>
+                <span class="pl">装帧:</span> 精装<br>
+                <span class="pl">ISBN:</span> xxxxxxxxxxxxx<br>
+            </div>
+            <!--TODO:添加内容简介-->
+            <div id="intr" class="col-md-5" style="background-color: cornsilk;">
+                童话描写小王子没有被成人那骗人的世界所征服，而最终找到自己的理想。这理想就是连结宇宙万物的爱，而这种爱又是世间所缺少的。
+                因此，小王子常常流露出一种伤感的情绪。作者圣埃克絮佩里在献辞中说：这本书是献给长成了大人的从前那个孩子。
+                《小王子》不仅赢得了儿童读者，也为成年人所喜爱，
+                作品凝练的语言渗透了作者对人类及人类文明深邃的思索。它所表现出的讽刺与幻想，真情与哲理，使之成为法国乃至世界上最为著名的一部童话小说。
+            </div>
+        </div>
+        <!--TODO:设置传值-->
+        <div class="col-md-12" style="margin-left: 170px;">
+            <form  action="../phpFiles/setRead.php" method="post" class="col-md-2">            
+                <label> <button type="submit" name = "bookName" value="小王子.txt" >在线阅读</button> </label>          
+            </form>
+            <form  action="../phpFiles/orders.php" method="post" class="col-md-2">            
+                <label> <button type="submit" name = "bookName" value="小王子" >加入订单</button> </label>             
+            </form>
+            <form  action="../phpFiles/addPlan.php" method="post" class="col-md-2" >            
+                <label> <button type="submit" name = "bookName" value="小王子" >加入阅读计划</button> </label>             
+            </form>
+            <form  action="../phpFiles/removePlan.php" method="post" class="col-md-2" >            
+                <label> <button type="submit" name = "bookName" value="小王子" >移出阅读计划</button> </label>             
+            </form>
+            <form  action="../phpFiles/bookScore.php" method="post" class="col-md-2" >            
+                <label><input name ="score" type="number" min="1" max ="10" placeholder="评分" required>
+                <button type="submit" name = "bookName" value="小王子" >GO</button> </label>             
+            </form>
+        </div>
+    </div>
+       
+
+  
+</body>
+
+</html>

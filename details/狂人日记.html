@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>西卡图书</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- 顶层导航-->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">西卡图书</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="../home.html">首页</a></li>
+                    <li><a href="../bookTop.html">图书榜</a></li>
+                    <li><a href="../cart.html">我的订单</a></li>
+                    <li><a href="../center.html">个人中心</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="title">
+            <!--TODO:替换标题-->
+            <h2>狂人日记</h2>
+        </div>
+        <div class="row">
+            <div id="mainpic" class="col-md-3">
+                <!--TODO:替换图片-->
+                <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522212456.jpg" alt="图片加载失败" style="max-height: 250px;">
+                <br>
+            </div>
+            <!--TODO:修改相关信息-->
+            <div id="info" class="col-md-4">
+                <span class="pl">作者:</span> 鲁迅<br>
+                <span class="pl">出版社:</span> xx出版社<br>
+                <span class="pl">原作名:</span> xxx<br>
+                <span class="pl"> 译者:</span> xxx <br>
+                <span class="pl">出版年:</span> xxxx-x<br>
+                <span class="pl">页数:</span> xxx<br>
+                <span class="pl">定价:</span> xx.00元<br>
+                <span class="pl">装帧:</span> 精装<br>
+                <span class="pl">ISBN:</span> xxxxxxxxxxxxx<br>
+            </div>
+            <!--TODO:添加内容简介-->
+            <div id="intr" class="col-md-5" style="background-color: cornsilk;">
+                《狂人日记》是鲁迅创作的第一个短篇白话日记体小说，也是中国第一部现代白话文小说，写于1918年4月。
+                该文首发于1918年5月15日4卷5号的《新青年》月刊，后收入《呐喊》集，编入《鲁迅全集》第一卷。 
+                小说通过被迫害者“狂人”的形象以及“狂人”的自述式的描写，揭示了封建礼教的“吃人”本质，表现了作者对以封建礼教为主体内涵的中国封建文化的反抗；
+                也表现了作者深刻的忏悔意识。作者以彻底的“革命民主主义”的立场对中国的文化进行了深刻的反思，同时对中国的甚至是人类的前途表达了深广的忧愤。 
+                2019年4月，以色列独立文学出版社九条命出版社和中国人民大学出版社在特拉维夫大学签署协议，
+                将在以色列出版鲁迅经典作品《狂人日记》希伯来语版，由《红楼梦》希伯来语版的译者柯阿米拉教授翻译
+            </div>
+        </div>
+        <!--TODO:设置传值-->
+        <div class="col-md-12" style="margin-left: 170px;">
+            <form  action="../phpFiles/setRead.php" method="post" class="col-md-2">            
+                <label> <button type="submit" name = "bookName" value="狂人日记.txt" >在线阅读</button> </label>          
+            </form>
+            <form  action="../phpFiles/orders.php" method="post" class="col-md-2">            
+                <label> <button type="submit" name = "bookName" value="狂人日记" >加入订单</button> </label>             
+            </form>
+            <form  action="../phpFiles/addPlan.php" method="post" class="col-md-2" >            
+                <label> <button type="submit" name = "bookName" value="狂人日记" >加入阅读计划</button> </label>             
+            </form>
+            <form  action="../phpFiles/removePlan.php" method="post" class="col-md-2" >            
+                <label> <button type="submit" name = "bookName" value="狂人日记" >移出阅读计划</button> </label>             
+            </form>
+            <form  action="../phpFiles/bookScore.php" method="post" class="col-md-2" >            
+                <label><input name ="score" type="number" min="1" max ="10" placeholder="评分" required>
+                <button type="submit" name = "bookName" value="狂人日记" >GO</button> </label>             
+            </form>
+        </div>
+    </div>
+       
+
+  
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>西卡图书</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <!-- 顶层导航-->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">西卡图书</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="../home.html">首页</a></li>
+                    <li><a href="../bookTop.html">图书榜</a></li>
+                    <li><a href="../cart.html">我的订单</a></li>
+                    <li><a href="../center.html">个人中心</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="title">
+            <!--TODO:替换标题-->
+            <h2>名人传</h2>
+        </div>
+        <div class="row">
+            <div id="mainpic" class="col-md-3">
+                <!--TODO:替换图片-->
+                <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522220554.jpg" alt="图片加载失败" style="max-height: 250px;">
+                <br>
+            </div>
+            <!--TODO:修改相关信息-->
+            <div id="info" class="col-md-4">
+                <span class="pl">作者:</span> xxx<br>
+                <span class="pl">出版社:</span> xx出版社<br>
+                <span class="pl">原作名:</span> xxx<br>
+                <span class="pl"> 译者:</span> xxx <br>
+                <span class="pl">出版年:</span> xxxx-x<br>
+                <span class="pl">页数:</span> xxx<br>
+                <span class="pl">定价:</span> xx.00元<br>
+                <span class="pl">装帧:</span> 精装<br>
+                <span class="pl">ISBN:</span> xxxxxxxxxxxxx<br>
+            </div>
+            <!--TODO:添加内容简介-->
+            <div id="intr" class="col-md-5" style="background-color: cornsilk;">
+                《名人传》，是由19世纪末20世纪初法国著名的批判现实主义作家罗曼·罗兰（1866~1944年）创作的人物传记作品，它包括《贝多芬传》（1903）《米开朗琪罗传》（或译作米开朗基罗）（1906）《托尔斯泰传》（1911）三部传记，传记共计字数268000。称为“三大英雄传记”，也被称为“巨人三传”。现已被选中为人教版八年级下册语文名著阅读。
+                这本书也非常好地印证了一句中国人的古训：古今之立大事业者，不惟有超世之才，亦必有坚韧不拔之志。
+            </div>
+        </div>
+        <!--TODO:设置传值-->
+        <div class="col-md-12" style="margin-left: 170px;">
+            <form  action="../phpFiles/setRead.php" method="post" class="col-md-2">            
+                <label> <button type="submit" name = "bookName" value="名人传.txt" >在线阅读</button> </label>          
+            </form>
+            <form  action="../phpFiles/orders.php" method="post" class="col-md-2">            
+                <label> <button type="submit" name = "bookName" value="名人传" >加入订单</button> </label>             
+            </form>
+            <form  action="../phpFiles/addPlan.php" method="post" class="col-md-2" >            
+                <label> <button type="submit" name = "bookName" value="名人传" >加入阅读计划</button> </label>             
+            </form>
+            <form  action="../phpFiles/removePlan.php" method="post" class="col-md-2" >            
+                <label> <button type="submit" name = "bookName" value="名人传" >移出阅读计划</button> </label>             
+            </form>
+            <form  action="../phpFiles/bookScore.php" method="post" class="col-md-2" >            
+                <label><input name ="score" type="number" min="1" max ="10" placeholder="评分" required>
+                <button type="submit" name = "bookName" value="名人传" >GO</button> </label>             
+            </form>
+        </div>
+    </div>
+       
+
+  
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>西卡图书</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <!-- 顶层导航-->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">西卡图书</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="home.html">首页</a></li>
+                    <li ><a href="bookTop.html">图书榜</a></li>
+                    <li><a href="cart.html">我的订单</a></li>
+                    <li><a href="center.html">个人中心</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="list-group col-md-8" id="search-res">
+            <script>
+                $.getJSON("phpFiles/showSearch.php?jsoncallback=?", function (data) {
+                    var html = '';
+                    //处理数据,整理成html格式
+                    for (var i = 1; i < data.length; i += 4) {
+                        html += '<div class="col-md-12  list-group-item" name="bookLine">';
+                        //图片
+                        html += '<div class="col-md-4">' 
+                            + '<a href="details/' + data[i] +'.html">'
+                            + '<img src="' + data[i+1] + '" style="width:180px;height: 200px;" alt="图片加载失败"> </a> </div> ';
+                        //评分&评分人数
+                        html += '<div class="col-md-3" style="padding-top: 90px;"> <p>作者：' + data[i+2] + '</p> </div>';
+                        html += '<div class="col-md-3" style="padding-top: 90px;"> <p>评分：' + data[i+3] + '</p> </div>';
+                        //
+                        html += '</div>';
+                    }
+                    $('#search-res').append(html);
+                });
+            </script>
+        </div>
+    </div>
+   
+
+    <!--版权说明-->
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>版权所有 @work_Jessica</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>西卡图书</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <!-- 顶层导航-->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">西卡图书</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="../home.html">首页</a></li>
+                    <li><a href="../bookTop.html">图书榜</a></li>
+                    <li><a href="../cart.html">我的订单</a></li>
+                    <li><a href="../center.html">个人中心</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="title">
+            <!--TODO:替换标题-->
+            <h2>傲慢与偏见</h2>
+        </div>
+        <div class="row">
+            <div id="mainpic" class="col-md-3">
+                <!--TODO:替换图片-->
+                <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522210328.jpg" alt="图片加载失败" style="max-height: 250px;">
+                <br>
+            </div>
+            <!--TODO:修改相关信息-->
+            <div id="info" class="col-md-4">
+                <span class="pl">作者:</span> xxx<br>
+                <span class="pl">出版社:</span> xx出版社<br>
+                <span class="pl">原作名:</span> xxx<br>
+                <span class="pl"> 译者:</span> xxx <br>
+                <span class="pl">出版年:</span> xxxx-x<br>
+                <span class="pl">页数:</span> xxx<br>
+                <span class="pl">定价:</span> xx.00元<br>
+                <span class="pl">装帧:</span> 精装<br>
+                <span class="pl">ISBN:</span> xxxxxxxxxxxxx<br>
+            </div>
+            <!--TODO:添加内容简介-->
+            <div id="intr" class="col-md-5" style="background-color: cornsilk;">
+               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            </div>
+        </div>
+        <!--TODO:设置传值-->
+        <div class="col-md-12" style="margin-left: 170px;">
+            <form  action="../phpFiles/setRead.php" method="post" class="col-md-2">            
+                <label> <button type="submit" name = "bookName" value="傲慢与偏见.txt" >在线阅读</button> </label>          
+            </form>
+            <form  action="../phpFiles/orders.php" method="post" class="col-md-2">            
+                <label> <button type="submit" name = "bookName" value="傲慢与偏见" >加入订单</button> </label>             
+            </form>
+            <form  action="../phpFiles/addPlan.php" method="post" class="col-md-2" >            
+                <label> <button type="submit" name = "bookName" value="傲慢与偏见" >加入阅读计划</button> </label>             
+            </form>
+            <form  action="../phpFiles/removePlan.php" method="post" class="col-md-2" >            
+                <label> <button type="submit" name = "bookName" value="傲慢与偏见" >移出阅读计划</button> </label>             
+            </form>
+            <form  action="../phpFiles/bookScore.php" method="post" class="col-md-2" >            
+                <label><input name ="score" type="number" min="1" max ="10" placeholder="评分" required>
+                <button type="submit" name = "bookName" value="傲慢与偏见" >GO</button> </label>             
+            </form>
+        </div>
+
+        <!--评论区-->
+        <div class="col-md-12" id="用户评论">
+            <h2>评论区</h2>
+            <script>
+                //个人信息
+                $.getJSON("phpFiles/remark.php?bookName='傲慢与偏见'?jsoncallback=?", function (data) {
+                        // var html = '<div class="info col-md-4"> <h1> Welcome,' + data[0] + '</h1> </div>';
+                        // $('#user-profile').after(html);
+                        // html = ' <br> <div class> <h4>' + data[0] + ',这里是你的主页，也是别人认识你的地方。完善你的个人资料，开始全新的读书之旅吧 </h4>';
+                        // $('#clearfix').after(html);
+                        // //处理数据,整理成html格式
+                        // html = '<form  action="phpFiles/modify.php" method="post">'
+                        //     + ' <label><input class="text" type="text" maxlength="100" placeholder="补充下个人介绍吧" name="intro"  value=' + data[1]
+                        //     + ' style="width: 800px; height: 150px; " required/> <br>';
+                        // html += '<label> <button type="submit" name = "submit" value="个人介绍" >提交修改</button> </label>';
+                        // html += '</form>';
+                        // $('#用户评论').append(html);
+                    });
+            </script>
+        </div>
+    </div>
+       
+
+  
+</body>
+
+</html>

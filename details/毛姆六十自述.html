@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>西卡图书</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <!-- 顶层导航-->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">西卡图书</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="../home.html">首页</a></li>
+                    <li><a href="../bookTop.html">图书榜</a></li>
+                    <li><a href="../cart.html">我的订单</a></li>
+                    <li><a href="../center.html">个人中心</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="title">
+            <!--TODO:替换标题-->
+            <h2>毛姆六十自述</h2>
+        </div>
+        <div class="row">
+            <div id="mainpic" class="col-md-3">
+                <!--TODO:替换图片-->
+                <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522220623.jpg" alt="图片加载失败" style="width:180px;max-height: 250px;">
+                <br>
+            </div>
+            <!--TODO:修改相关信息-->
+            <div id="info" class="col-md-4">
+                <span class="pl">作者:</span> xxx<br>
+                <span class="pl">出版社:</span> xx出版社<br>
+                <span class="pl">原作名:</span> xxx<br>
+                <span class="pl"> 译者:</span> xxx <br>
+                <span class="pl">出版年:</span> xxxx-x<br>
+                <span class="pl">页数:</span> xxx<br>
+                <span class="pl">定价:</span> xx.00元<br>
+                <span class="pl">装帧:</span> 精装<br>
+                <span class="pl">ISBN:</span> xxxxxxxxxxxxx<br>
+            </div>
+            <!--TODO:添加内容简介-->
+            <div id="intr" class="col-md-5" style="background-color: cornsilk;">
+                本书为毛姆64岁时做的人生总结，在其中读者会感受到一名职业作家对文学、艺术、戏剧和哲学的理性思考，毛姆精妙的写作技艺也在书中得到淋漓尽致的展示。
+                毛姆虽是一位饱受争议的作家，但岁月的磨砺使他成为一位坦然、睿智的老人。他的人生哲学与智慧，值得每一位青年阅读和学习。
+            </div>
+        </div>
+        <!--TODO:设置传值-->
+        <div class="col-md-12" style="margin-left: 170px;">
+            <form  action="../phpFiles/setRead.php" method="post" class="col-md-2">            
+                <label> <button type="submit" name = "bookName" value="毛姆六十自述.txt" >在线阅读</button> </label>          
+            </form>
+            <form  action="../phpFiles/orders.php" method="post" class="col-md-2">            
+                <label> <button type="submit" name = "bookName" value="毛姆六十自述" >加入订单</button> </label>             
+            </form>
+            <form  action="../phpFiles/addPlan.php" method="post" class="col-md-2" >            
+                <label> <button type="submit" name = "bookName" value="毛姆六十自述" >加入阅读计划</button> </label>             
+            </form>
+            <form  action="../phpFiles/removePlan.php" method="post" class="col-md-2" >            
+                <label> <button type="submit" name = "bookName" value="毛姆六十自述" >移出阅读计划</button> </label>             
+            </form>
+            <form  action="../phpFiles/bookScore.php" method="post" class="col-md-2" >            
+                <label><input name ="score" type="number" min="1" max ="10" placeholder="评分" required>
+                <button type="submit" name = "bookName" value="毛姆六十自述" >GO</button> </label>             
+            </form>
+        </div>
+    </div>
+       
+
+  
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>西卡图书</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+</head>
+
+
+<body>
+
+    <!-- 顶层导航-->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">西卡图书</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="home.html">首页</a></li>
+                    <li><a href="BookTop.html">图书榜</a></li>
+                    <li class="active"><a href="#">我的订单</a></li>
+                    <li><a href="center.html">个人中心</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--订单内容-->
+    <div class="container">
+        <div class="row thumbnail center">
+            <!--题目-->
+            <div class="col-md-12">
+                <h3 class="text-center" style="margin-bottom: 30px">我的订单</h3>
+            </div>
+            <!--表格-->
+            <div class=" list-group">
+                <!--标题栏-->
+                <div class="col-md-12 thumbnail" id="order-head">
+                    <div class="col-sm-3 line-center">图书</div>
+                    <div class="col-sm-1 line-center">单价</div>
+                    <div class="col-sm-3 line-center">数量 </div>
+                    <div class="col-sm-1 line-center">操作</div>
+                </div>
+                <!--订单内容-->
+                <script>
+                    $.getJSON("phpFiles/cart.php?jsoncallback=?", function (data) {                  
+                        var html = '';
+                        var totalNum = 0;
+                        var totalPrice = 0;
+                        //处理数据,整理成html格式
+                        for (var i = 1; i < data.length; i += 4) {
+                            html += '<form action="phpFiles/changeOrder.php" method="post" class= "col-md-12  list-group-item" name="bookLine" > ';
+                            html += '<div class="col-md-3 line-center" style="width: 100px;height: 100px;">'; //图片
+                            html += '<img src=' +"'" + data[i] +"'" + 'style="height: 100%;" />' + '</div>';
+                            //书名,只读字段
+                            html += '<div class= "col-md-2 line-center" >';
+                            html += '<input name ="bookName" type="text" value = ' + "'" + data[i + 1] +"' readonly>";
+                            html += '</div>';
+                            html += '<div class= "col-md-1 line-center" >' + data[i + 2] + '</div>';    //单价
+                            //数量输入框，初始值为后台数据
+                            html += '<div class= "col-md-2 line-center" >';
+                            html += '<input name ="orderNum" type="number" min="1" max ="10" value = ' + "'" + data[i + 3] +"' >";
+                            html += '</div>';
+                            totalNum+=data[i+3];
+                            totalPrice+=data[i+3]*data[i+2];
+                            //提交框
+                            html += '<button  class="col-md-1 btn btn-danger" type="submit" name="pattern" value="删除订单">删除订单</button>';
+                            html += '<div class="col-md-1"></div>';
+                            html += '<button  class="col-md-1 btn btn-success" type="submit" name="pattern" value="修改订单">提交修改</button>';
+                            //
+                            html += '</form>';
+                        }
+                        //合计订单内容
+                        html += ' <div class="col-sm-12 thumbnail">' + '<div class=" col-sm-offset-4 col-sm-2 text-right">总数：</div>'
+                        +'<div class="col-sm-2">' + totalNum + '</div>'
+                        + '<div class="col-sm-2 text-right">总价：</div>' + ' <div class="col-sm-2"> ' + totalPrice + '</div>'
+                        + ' </div>';
+                        $('#order-head').after(html);
+                    });
+                </script>
+            </div>
+            <div class="col-sm-offset-7 col-sm-5" style="padding: 30px;">
+                <div class="col-md-6"> 
+                    <button class="btn btn-success" onclick="location.href = 'home.html'">回到主页</button>
+                </div>
+                <div class="col-md-6  ">
+                    <button class="btn btn-success" onclick="closeOrder()">结算订单</button>
+                    <script>
+                        function closeOrder() {
+                            var r = confirm('请确认修改已提交!');
+                            if (r == true)
+                                location = "phpFiles/closeOrder.php";
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--版权说明-->
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>版权所有 @work_Jessica</p>
+    </div>
+</body>
+
+</html>

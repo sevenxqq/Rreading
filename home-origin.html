@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>西卡图书</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .fakeimg {
+            height: 200px;
+            background: #aaa;
+        }
+
+        #今日推荐{
+            height: 300px;
+        }
+
+        #今日推荐 .carousel-inner>.item>img {
+            display: block;
+            width: 100%;
+            height: 300px;
+        }
+        #近期热读{
+            height: 300px;
+        }
+
+        #近期热读 .carousel-inner>.item>img {
+            display: block;
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--网站名&搜索框-->
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <h1>西卡图书</h1>
+        <!-- TODO:这里放一个搜索栏，实现搜索功能-->
+        <form class="bs-example bs-example-form m-auto" role="form"  action="phpFiles/setSearch.php" method="post">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="search" class="form-control" name="search" placeholder="搜索书名，请您少字也别打错字">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Go</button>
+                    </span>
+                </div><!-- /input-group -->
+            </div><!-- /form-group -->
+        </form>
+    </div>
+
+    <!-- 顶层导航-->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">西卡图书</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">首页</a></li>
+                    <li><a href="bookTop.html">图书榜</a></li>
+                    <li><a href="cart.html">我的订单</a></li>
+                    <li><a href="center.html">个人中心</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--盒子模型：左侧推荐&导航，右侧分类图书-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2" style="margin-left:-10px;">
+                <div class="col" id="program">
+                    <h3>频道索引</h3>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="#今日推荐">今日推荐</a></li>
+                        <li><a href="#中外名著">中外名著</a></li>
+                        <li><a href="#文学频道">文学频道</a></li>
+                        <li><a href="#人物传记">人物传记</a></li>
+                        <li><a href="#影视原著">影视原著</a></li>
+                        <li><a href="#少儿频道">少儿频道</a></li>
+                    </ul>
+                </div>
+                <!--分割线-->
+                <script>
+                    $.getJSON("phpFiles/showPlan.php?jsoncallback=?", function (data) {
+                        var html = '<hr class="hidden-sm hidden-md hidden-lg">'
+                            + '<h3>阅读计划</h3>' + ' <ul class="nav nav-pills nav-stacked">';
+                        //处理数据,整理成html格式
+                        for (var i = 1; i < data.length; ++i) {
+                            html += '<li> <a href="details/' + data[i] + '.html">' + data[i] + '</a></li>';
+                        }
+                        html += '</ul>';
+                        $('#program').after(html);
+                    });
+                </script>
+                <hr class="hidden-sm hidden-md hidden-lg">
+            </div>
+
+            <div class="col-sm-10">
+                <div class="col-sm-12">
+                    <div class=" col-md-5">
+                        <h2>今日推荐</h2>
+                        <div id="今日推荐" class="carousel slide" data-interval="4000">
+                            <!-- 轮播（Carousel）指标 -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#今日推荐" data-slide-to="0" class="active"></li>
+                                <li data-target="#今日推荐" data-slide-to="1"></li>
+                                <li data-target="#今日推荐" data-slide-to="2"></li>
+                            </ol>
+                            <!-- 轮播（Carousel）项目 -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522210328.jpg" alt="图片加载失败">
+                                </div>
+                                <div class="item">
+                                    <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522221245.jpg" alt="图片加载失败">
+                                </div>
+                                <div class="item">
+                                    <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522221828.jpg" alt="图片加载失败">
+                                </div>
+                            </div>
+                            <!-- 轮播（Carousel）导航 -->
+                            <a class="carousel-control left" href="#今日推荐" data-slide="prev"> <span _ngcontent-c3=""
+                                    aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></a>
+                            <a class="carousel-control right" href="#今日推荐" data-slide="next">&rsaquo;</a>
+                        </div>
+                    </div>
+                    <!--中间填充两列空白-->
+                    <div class="col-md-2">
+
+                    </div>
+                    <div class="col-md-5">
+                        <h2>近期热读</h2>
+                        <div id="近期热读" class="carousel slide" data-interval="4000">
+                            <!-- 轮播（Carousel）指标 -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#近期热读" data-slide-to="0" class="active"></li>
+                                <li data-target="#近期热读" data-slide-to="1"></li>
+                                <li data-target="#近期热读" data-slide-to="2"></li>
+                            </ol>
+                            <!-- 轮播（Carousel）项目 -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522221823.jpg" alt="图片加载失败">
+                                </div>
+                                <div class="item">
+                                    <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522221402.jpg" alt="图片加载失败">
+                                </div>
+                                <div class="item">
+                                    <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522210320.jpg" alt="图片加载失败">
+                                </div>
+                            </div>
+                            <!-- 轮播（Carousel）导航 -->
+                            <a class="carousel-control left" href="#近期热读" data-slide="prev"> <span _ngcontent-c3=""
+                                    aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></a>
+                            <a class="carousel-control right" href="#近期热读" data-slide="next">&rsaquo;</a>
+                        </div>
+                    </div>
+                   
+                </div>
+                <hr class="hidden-sm hidden-md hidden-lg">
+                <!--频道一-->
+                <div class="col-sm-12" id="中外名著">
+                    <h2>中外名著</h2>
+                    <div class="col-sm-10 col-md-3" id="杀死一只知更鸟">
+                        <a href="details/杀死一只知更鸟.html" class="thumbnail">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522204518.jpg" alt="图片加载失败" style="height:250px; width:100%;">
+                        </a>
+                    </div>
+                    <div class="col-sm-10 col-md-3" name="边城">
+                        <a href="details/边城.html" class="thumbnail">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522210315.jpg" alt="图片加载失败">
+                        </a>
+                    </div>
+                    <div class="col-sm-10 col-md-3" id="傲慢与偏见">
+                        <a href="details/傲慢与偏见.html" class="thumbnail">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522210320.jpg" alt="图片加载失败">
+                        </a>
+                    </div>
+                    <div class="col-sm-10 col-md-3" id="飘">
+                        <a href="details/飘.html" class="thumbnail">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522210328.jpg" alt="图片加载失败">
+                        </a>
+                    </div>
+                    <br>
+                </div>
+
+                <hr class="hidden-sm hidden-md hidden-lg">
+                <!--频道二-->
+                <div class="col-sm-12" id="文学频道">
+                    <h2>文学频道</h2>
+                    <div class="col-sm-6 col-md-3">
+                        <a href="details/活着.html" class="thumbnail" id="活着">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522212451.jpg" alt="图片加载失败" style="height:250px; width:100%;">
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <a href="details/狂人日记.html" class="thumbnail" id="狂人日记">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522212456.jpg" alt="图片加载失败">
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <a href="details/人间词话.html" class="thumbnail" id="人间词话">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522212501.jpg" alt="图片加载失败">
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <a href="details/我与地坛.html" class="thumbnail" id="我与地坛">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522212505.jpg" alt="图片加载失败">
+                        </a>
+                    </div>
+                    <br>
+                </div>
+                <hr class="hidden-sm hidden-md hidden-lg">
+                <!--频道三-->
+                <div class="col-sm-12" id="人物传记">
+                    <h2>人物传记</h2>
+                    <div class="col-sm-8 col-md-3">
+                        <a href="details/苏东坡传.html" class="thumbnail" id="苏东坡传">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210602085508.jpg" alt="图片加载失败" style=" width:100%;">
+                        </a>
+                    </div>
+                    <div class="col-sm-8 col-md-3">
+                        <a href="details/荣格自传.html" class="thumbnail" id="荣格自传">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522220534.jpg" alt="图片加载失败">
+                        </a>
+                    </div>
+                    <div class="col-sm-8 col-md-3">
+                        <a href="details/名人传.html" class="thumbnail" id="名人传">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522220554.jpg" alt="图片加载失败">
+                        </a>
+                    </div>
+                    <div class="col-sm-8 col-md-3">
+                        <a href="details/毛姆六十自述.html" class="thumbnail" id="毛姆六十自述">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522220623.jpg" alt="图片加载失败">
+                        </a>
+                    </div>
+                    <br>
+                </div>
+                <hr class="hidden-sm hidden-md hidden-lg">
+                <!--频道四-->
+                <div class="col-sm-12" id="影视原著">
+                    <h2>影视原著</h2>
+                    <div class="col-sm-8 col-md-3">
+                        <a href="details/爱在黎明破晓前.html" class="thumbnail" id="爱在黎明破晓前">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522221402.jpg" alt="图片加载失败">
+                        </a>
+                    </div>
+                    <div class="col-sm-8 col-md-3" id="怦然心动">
+                        <a href="details/怦然心动.html" class="thumbnail">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522221254.jpg" alt="图片加载失败" style="height:250px; width:100%;">
+                        </a>
+                    </div>
+                    <div class="col-sm-8 col-md-3" id="冰与火之歌">
+                        <a href="details/冰与火之歌.html" class="thumbnail">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522221245.jpg" alt="图片加载失败">
+                        </a>
+                    </div>
+                    <div class="col-sm-8 col-md-3">
+                        <a href="details/指环王.html" class="thumbnail" id="指环王">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522221250.jpg" alt="图片加载失败">
+                        </a>
+                    </div>
+                    <br>
+                </div>
+                <hr class="hidden-sm hidden-md hidden-lg">
+                <!--频道五-->
+                <div class="col-sm-12" id="少儿频道">
+                    <h2>少儿频道</h2>
+                    <div class="col-sm-8 col-md-3" id="小王子">
+                        <a href="details/小王子.html" class="thumbnail">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522221828.jpg" alt="图片加载失败">
+                        </a>
+                    </div>
+                    <div class="col-sm-8 col-md-3">
+                        <a href="details/草房子.html" class="thumbnail" id="草房子">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522221823.jpg" alt="图片加载失败"style="height:250px; width:100%;">
+                        </a>
+                    </div>
+                    <div class="col-sm-8 col-md-3">
+                        <a href="#" class="thumbnail" id="安徒生童话">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522221819.jpg" alt="图片加载失败"style="height:250px; width:100%;">
+                        </a>
+                    </div>
+                    <div class="col-sm-8 col-md-3">
+                        <a href="#" class="thumbnail" id="青铜葵花">
+                            <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522221832.jpg" alt="图片加载失败">
+                        </a>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <!--主内容-->
+
+        </div>
+    </div>
+
+
+
+    <!--版权说明-->
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>版权所有 @work_Jessica</p>
+        <p>参考信息：</p>
+        <li><a href="https://cread.jd.com/custom/custom_pcDownload.action">京东读书</a></li>
+        <li ><a href="https://book.douban.com/">豆瓣读书</a></li>
+        <li><a href="http://book.dangdang.com/index">当当图书</a></li>
+    </div>
+</body>
+
+</html>

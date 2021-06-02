@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<style type="text/css">
+body {
+	background-size: cover;
+	min-width: 1000px;
+	background-image:url(https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522003609.jfif);
+	font-size:14px;
+}
+#main {
+	width:360px;
+	height:320px;
+	background:#fff;
+	border:1px solid #ddd;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-180px;
+	margin-top:-160px;
+	background-size: cover;
+	background-image:url(https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210520222408.jfif);
+}
+#main .title {
+	height: 48px;
+	line-height: 48px;
+	color:#333;
+	font-size:16px;
+	font-weight:bold;
+	text-indent:30px;
+	border-bottom:1px dashed #eee;
+	
+}
+#main form {
+	width:300px;
+	margin:20px 0 0 40px;
+}
+#main form label {
+	margin:20px 0 0 40px;
+	display:block;
+}
+#main form label input.text {
+	width:200px;
+	height:25px;
+}
+
+#main form label input.submit {
+	width:200px;
+	display:block;
+	height:35px;
+	cursor:pointer;
+	margin:20px 0 0 2px;
+}
+</style>
+</head>
+<body>
+	<div id="main">
+		<div class="title">欢迎使用，请注册</div>
+		<form  action="phpFiles/register.php" method="post"  >
+            <!--待加入严格正则&输入长度限制-->
+            <label><input class="text" type="email"  placeholder="邮箱" name="useremail" maxlength="30" required/></label>
+			<label><input class="text" type="text"  placeholder="用户名" name="username" maxlength="20" required/></label>
+			<label><input class="text" type="password"  placeholder="密码" name="userpassword" maxlength="20" required/></label>		
+			<label><input class="submit" type="submit" name="submit" value="注册" /></label>	
+		</form>
+	</div>
+	
+</body>
+</html>

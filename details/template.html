@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>西卡图书</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .remark-content {
+            width: 100%;
+            white-space: pre-wrap;
+            *white-space: pre;
+            *word-wrap: break-word;
+        }
+        button{
+            border:none;
+        }
+        blockquote::before {
+            content: "\201C"; /*左双引号的Unicode编码*/
+
+            /*字体*/
+            font-family: Georgia, serif;
+            font-size: 60px;
+            font-weight: bold;
+            color:#999;
+
+            /*位置*/
+            position: absolute;
+            left: 10px;
+            top:5px;
+        }
+        blockquote::after {
+            content: ""; /*如果要显示右双引号，则写 content: "\201D"; */
+        }
+    </style>
+  
+</head>
+
+<body>
+
+    <!-- 顶层导航-->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">西卡图书</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="../home.html">首页</a></li>
+                    <li><a href="../bookTop.html">图书榜</a></li>
+                    <li><a href="../cart.html">我的订单</a></li>
+                    <li><a href="../center.html">个人中心</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="title">
+            <h2>傲慢与偏见</h2>
+        </div>
+        <div class="row">
+            <div id="mainpic" class="col-md-3">
+                <img src="https://cdn.jsdelivr.net/gh/sevenxqq/pics/20210522210320.jpg" alt="图片加载失败" style="max-height: 250px;">
+                <br>
+            </div>
+            <div id="info" class="col-md-4">
+                <span class="pl">作者:</span> [英国] 简·奥斯汀<br>
+                <span class="pl">出版社:</span> xx出版社<br>
+                <span class="pl">原作名:</span> Pride and Prejudice<br>
+                <span class="pl"> 译者:</span>xxx <br>
+                <span class="pl">出版年:</span> xxxx-x<br>
+                <span class="pl">页数:</span> 1235<br>
+                <span class="pl">定价:</span> xx.00元<br>
+                <span class="pl">装帧:</span> 精装<br>
+                <span class="pl">ISBN:</span> 9787806570920<br>
+            </div>
+            <div id="intr" class="col-md-5" style="background-color: cornsilk;">
+                小说描写了小乡绅班纳特五个待字闺中的千金，主角是二女儿伊丽莎白。她在舞会上认识了达西，但是耳闻他为人傲慢，一直对他心生排斥，经历一番周折，
+                伊丽莎白解除了对达西的偏见，达西也放下傲慢，有情人终成眷属。 <br>
+                这部作品以日常生活为素材，一反当时社会上流行的感伤小说内容和矫揉造作的写作方法，
+                生动地反映了18世纪末到19世纪初处于保守和闭塞状态下的英国乡镇生活和世态人情。并多次被改编成电影和电视剧。
+            </div>
+        </div>
+       
+        <div class="col-md-12" style="margin-left: 180px; margin-top: 20px;">
+            <form  action="../phpFiles/setRead.php" method="post" class="col-md-2">            
+                <label> <button type="submit" name = "bookName" value="傲慢与偏见.txt">在线阅读</button> </label>          
+            </form>
+            <form  action="../phpFiles/orders.php" method="post" class="col-md-2" >            
+                <label> <button type="submit" name = "bookName" value="傲慢与偏见" >加入订单</button> </label>             
+            </form>
+            <form  action="../phpFiles/addPlan.php" method="post" class="col-md-2" >            
+                <label> <button type="submit" name = "bookName" value="傲慢与偏见" >加入阅读计划</button> </label>             
+            </form>                                                                                                                                                                                                                                                                                           
+            <form  action="../phpFiles/removePlan.php" method="post" class="col-md-2" >            
+                <label> <button type="submit" name = "bookName" value="傲慢与偏见" >移出阅读计划</button> </label>             
+            </form>
+            <form  action="../phpFiles/bookScore.php" method="post" class="col-md-2" >            
+                <label><input name ="score" type="number" min="1" max ="10" placeholder="评分" required>
+                <button type="submit" name = "bookName" value="傲慢与偏见" >GO</button> </label>             
+            </form>
+        </div>
+
+        <!--评论区-->
+        <div class="col-md-12" id="用户评论" style="margin-top: 50px;">
+            <h2>评论区-测试版本</h2>
+            <div class="col-md-12" id="当前用户评论"></div>
+            <div class="col-md-12" id="其他用户评论" style="margin-top: 30px;"></div>
+            <script>
+                $.getJSON("../phpFiles/remark.php?bookName=傲慢与偏见&jsoncallback=?", function (data) {
+                    var html='';
+                    html = '<form  action="../phpFiles/alterRemark.php" method="post" >'
+                        + ' <label><input class="text" type="text" maxlength="100" placeholder="这本书怎么样，写点评论吧" name="remark"';
+                    if (data[1] != '空空如也')
+                        html += 'value=' + data[1];
+                    html += ' style="width: 1000px; height: 150px;" required> <br>';
+                    html += '<label> <button type="submit" name = "submit" value="傲慢与偏见" >提交评论</button> </label>';
+                    html += '</form>';
+                    $('#当前用户评论').append(html);
+                    //其他人的评论
+                    for (var i = 2; i < data.length; i += 2) {
+                        html = '<div class="col-md-8 remark-content" > <blockquote  style="background-color:rgb(250, 246, 246);margin-top:"30px";">' + data[i] + ' <br>'
+                            +'from ' +  data[i+1] + '</blockquote> </div>';
+                        $('#其他用户评论').append(html);
+                    }       
+                    // style="background-color:rgb(231, 226, 226);margin-top:"30px";"
+                });
+            </script>
+        </div>
+    </div>
+       
+
+  
+</body>
+
+</html>
+
